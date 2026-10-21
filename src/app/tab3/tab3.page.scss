@@ -1,0 +1,446 @@
+/* =====================================================
+   TAB 3 - PROSES CLUSTERING AHC
+   SIMPLE • RAPI • JELAS • ELEGAN
+===================================================== */
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.toolbar-custom {
+  --background: #1565c0;
+  --color: #ffffff;
+}
+
+ion-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+ion-title ion-icon {
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+
+/* =====================================================
+   CARD UMUM
+===================================================== */
+
+ion-card {
+  margin: 12px 0;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+  overflow: hidden;
+}
+
+ion-card-header {
+  padding-bottom: 8px;
+}
+
+ion-card-title {
+  color: #111827;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+ion-card-title ion-icon {
+  vertical-align: middle;
+  margin-right: 6px;
+  color: #1565c0;
+}
+
+ion-card-subtitle {
+  color: #6b7280;
+  font-size: 12px;
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+
+/* =====================================================
+   INFORMASI DATA
+===================================================== */
+
+.info-card ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 3px;
+}
+
+.info-card ion-item:last-child {
+  border-bottom: none;
+}
+
+.info-card ion-icon {
+  font-size: 20px;
+}
+
+.info-card ion-label {
+  font-size: 14px;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  opacity: 1 !important;
+}
+
+.info-card ion-badge {
+  font-size: 11px;
+  padding: 6px 9px;
+}
+
+
+/* =====================================================
+   CARD PROSES
+===================================================== */
+
+.proses-card {
+  text-align: center;
+}
+
+.proses-card h2 {
+  color: #1565c0;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.proses-card p {
+  color: #555555;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+
+/* =====================================================
+   BUTTON PROSES
+===================================================== */
+
+.proses-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 5px;
+}
+
+.btn-proses {
+  --background: #dc2626;
+  --background-activated: #b91c1c;
+  --color: #ffffff;
+
+  height: 45px;
+  min-width: 220px;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  text-transform: uppercase;
+
+  --border-radius: 30px;
+
+  --padding-start: 20px;
+  --padding-end: 20px;
+
+  --box-shadow: 0 5px 12px rgba(220, 38, 38, 0.25);
+}
+
+.btn-proses ion-icon {
+  font-size: 19px;
+  margin-right: 7px;
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-container {
+  width: 20%;
+  margin: 24px auto;
+  text-align: center;
+}
+
+.progress-container ion-progress-bar {
+  height: 10px;
+  border-radius: 10px;
+}
+
+.progress-text {
+  margin: 8px 0 0;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #374151;
+}
+
+
+/* =====================================================
+   STATUS PROSES
+===================================================== */
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 0;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  font-size: 14px;
+  color: #374151;
+}
+
+.status-item:last-child {
+  border-bottom: none;
+}
+
+.status-item span:last-child {
+  font-weight: bold;
+}
+
+
+/* =====================================================
+   CONTAINER SEMUA TABEL
+===================================================== */
+
+.table-container {
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  margin: 2px 0;
+}
+
+
+/* =====================================================
+   TABEL UMUM
+===================================================== */
+
+.result-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 650px;
+
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   HEADER TABEL UMUM
+===================================================== */
+
+.result-table thead th {
+  background: #1565c0;
+
+  color: #ffffff;
+
+  border: 1px solid #0d47a1;
+
+  padding: 9px 7px;
+
+  text-align: center;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   ISI TABEL UMUM
+===================================================== */
+
+.result-table tbody td {
+  border: 1px solid #d1d5db;
+
+  padding: 8px 7px;
+
+  color: #111827;
+
+  background: #ffffff;
+
+  vertical-align: middle;
+}
+
+
+/* =====================================================
+   BARIS SELANG-SELING
+===================================================== */
+
+.result-table tbody tr:nth-child(even) td {
+  background: #f5f9ff;
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.result-table tbody tr:hover td {
+  background: #e8f1ff;
+}
+
+
+/* =====================================================
+   ALIGNMENT
+===================================================== */
+
+.center {
+  text-align: center !important;
+}
+
+.number {
+  text-align: center !important;
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   TABEL TAHAPAN PROSES AHC
+===================================================== */
+
+.result-table {
+  width: 100%;
+  table-layout: fixed; /* INI KUNCINYA - Bikin semua kolom sama rata */
+  border-collapse: collapse;
+}
+
+.result-table th:nth-child(1),
+.result-table td:nth-child(1) {
+  width: 60px; /* ini boleh tetap, biar kolom no kecil */
+  text-align: center;
+}
+
+.result-table th:nth-child(2),
+.result-table td:nth-child(2) {
+  /* min-width: 260px;  HAPUS / COMMENT INI */
+}
+
+.result-table th:nth-child(3),
+.result-table td:nth-child(3) {
+  /* min-width: 280px;  HAPUS / COMMENT INI */
+}
+
+.result-table th,
+.result-table td {
+  text-align: center; /* biar semua di tengah */
+  padding: 10px 8px; /* atur tinggi baris */
+  word-wrap: break-word;
+}
+
+.process-result {
+  white-space: pre-line;
+  line-height: 1.4;
+}
+
+
+/* =====================================================
+   TABEL RIWAYAT PENGGABUNGAN CLUSTER - WARD
+===================================================== */
+
+.merge-table {
+  min-width: 800px;
+}
+
+.merge-table th,
+.merge-table td {
+  text-align: center;
+}
+
+.btn-anggota {
+  margin: 0;
+  --border-radius: 10px;
+  font-weight: 600;
+}
+
+.anggota-detail {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #f5f7fb;
+}
+
+.anggota-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 8px;
+  margin-bottom: 6px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.nomor-anggota {
+  min-width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #e8eefc;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.nama-anggota {
+  flex: 1;
+  font-weight: 500;
+}
+
+.kelas-anggota {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  white-space: nowrap;
+}
+/* =====================================================
+   KHUSUS TABEL EUCLIDEAN DISTANCE
+===================================================== */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Biar bisa scroll ke samping */
+  padding-bottom: 8px;
+}
+
+.distance-table {
+  min-width: 2430px; /* Atur: Jumlah Siswa x 45px. Ex: 25 siswa = 1125px */
+  width: max-content; /* Biar lebarnya ngikut isi, bukan 100% */
+  table-layout: auto; /* JANGAN fixed, biar kolomnya lega */
+  border-collapse: collapse;
+}
+
+.distance-table th,
+.distance-table td {
+  padding: 6px 10px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+  white-space: nowrap; /* Biar angka 12.3456 gak turun baris */
+  font-size: 11px;
+}
+
+/* Freeze kolom Nama pas di scroll */
+.sticky-name {
+  position: sticky;
+  left: 0;
+  background: #f9fafb;
+  z-index: 2;
+  font-weight: 600;
+  border-right: 2px solid #d1d5db;
+}

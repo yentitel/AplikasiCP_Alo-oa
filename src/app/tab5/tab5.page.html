@@ -1,0 +1,241 @@
+<ion-header>
+  <ion-toolbar style="--background: #B71C1C; --color: white;">
+    <ion-title>
+      Riwayat Clustering
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>
+        Data Riwayat Clustering
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <div class="table-container">
+
+        <table class="history-table">
+
+          <thead>
+
+            <tr>
+
+              <th>No</th>
+              <th>Tahun Ajaran</th>
+              <th>Semester</th>
+              <th>Kelas</th>
+              <th>Cluster</th>
+              <th>Silhouette</th>
+              <th>DBI</th>
+              <th>CHI</th>
+              <th>Tanggal</th>
+              <th>Aksi</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let item of history; let i = index">
+
+              <td>{{ i + 1 }}</td>
+
+              <td>{{ item.tahun_ajaran }}</td>
+
+              <td>{{ item.semester }}</td>
+
+              <td>{{ item.kelas }}</td>
+
+              <td>{{ item.jumlah_cluster }}</td>
+
+              <td>{{ item.silhouette }}</td>
+
+              <td>{{ item.dbi }}</td>
+
+              <td>{{ item.chi }}</td>
+
+              <td>{{ item.tanggal_proses }}</td>
+
+              <td class="Aksi">
+
+                <ion-button
+                  color="primary"
+                  size="small"
+                  fill="solid"
+                  (click)="lihatDetail(item.id)">
+
+                  <ion-icon
+                    slot="start"
+                    name="eye-outline">
+                  </ion-icon>
+
+                  Detail
+
+                </ion-button>
+
+                <ion-button
+                  color="danger"
+                  size="small"
+                  fill="solid"
+                  (click)="hapusHistory(item.id)">
+
+                  <ion-icon
+                    slot="start"
+                    name="trash-outline">
+                  </ion-icon>
+
+                  Hapus
+
+                </ion-button>
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </ion-card-content>
+
+  </ion-card>
+ <p>Jumlah Detail: {{ detailHistory.length }}</p>
+
+  <ion-card *ngIf="detailHistory.length > 0">
+
+  <ion-card-header>
+    <ion-card-title>Detail Hasil Clustering</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+<div class="table-container">
+    <table class="history-table">
+
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>Kelas</th>
+          <th>Cluster</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let item of detailHistory; let i = index">
+
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.nama }}</td>
+          <td>{{ item.kelas }}</td>
+          <td>{{ item.cluster }}</td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+</div>
+  </ion-card-content>
+
+</ion-card>
+
+<ion-card *ngIf="showDetail">
+
+  <ion-card-header>
+
+    <ion-card-title>
+      Matriks Euclidean Distance
+    </ion-card-title>
+
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <div class="table-container">
+
+      <table class="matrix-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Nama</th>
+
+            <th *ngFor="let nama of namaSiswa">
+              {{ nama }}
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let row of distanceMatrix; let i = index">
+
+            <th>
+              {{ namaSiswa[i] }}
+            </th>
+
+            <td *ngFor="let value of row">
+              {{ value }}
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </ion-card-content>
+
+</ion-card>
+<ion-card *ngIf="showDetail">
+
+  <ion-card-header>
+    <ion-card-title>Dendrogram</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <img
+      [src]="dendrogramUrl"
+      style="width:100%;border-radius:10px;">
+
+  </ion-card-content>
+
+</ion-card>
+
+<!-- ===============================
+     TOMBOL LOGOUT
+================================ -->
+
+<div class="logout-container">
+
+  <ion-button
+    expand="block"
+    color="danger"
+    class="logout-button"
+    (click)="logout()">
+
+    <ion-icon
+      slot="start"
+      name="log-out-outline">
+    </ion-icon>
+
+    Logout
+
+  </ion-button>
+
+</div>
+</ion-content>

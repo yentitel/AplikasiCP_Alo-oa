@@ -1,0 +1,154 @@
+<ion-content class="login-content">
+
+  <div class="login-container">
+
+    <!-- =========================
+         LOGO
+    ========================== -->
+
+    <div class="login-logo">
+      <ion-icon name="school-outline"></ion-icon>
+    </div>
+
+
+    <!-- =========================
+         JUDUL SISTEM
+    ========================== -->
+
+    <h1>CP-INSIGHT</h1>
+
+    <p class="subtitle">
+      Sistem Pengelompokan Capaian Pembelajaran
+      <br>
+      Menggunakan Agglomerative Hierarchical Clustering
+    </p>
+
+
+    <!-- =========================
+         CARD LOGIN
+    ========================== -->
+
+    <div class="login-card">
+
+      <h2>Login</h2>
+
+      <p>
+        Silakan masuk untuk melanjutkan
+      </p>
+
+
+      <!-- =========================
+           USERNAME
+      ========================== -->
+
+      <ion-item lines="none">
+
+        <ion-icon
+          name="person-outline"
+          slot="start">
+        </ion-icon>
+
+        <ion-input
+          type="text"
+          label="Username"
+          labelPlacement="floating"
+          placeholder="Masukkan username"
+          [(ngModel)]="username">
+        </ion-input>
+
+      </ion-item>
+
+
+      <!-- =========================
+           PASSWORD
+      ========================== -->
+
+      <ion-item lines="none">
+
+        <ion-icon
+          name="lock-closed-outline"
+          slot="start">
+        </ion-icon>
+
+        <ion-input
+          type="password"
+          label="Password"
+          labelPlacement="floating"
+          placeholder="Masukkan password"
+          [(ngModel)]="password">
+        </ion-input>
+
+      </ion-item>
+
+
+      <!-- =========================
+           PESAN ERROR
+      ========================== -->
+
+      <div
+        class="error-message"
+        *ngIf="errorMessage">
+
+        <ion-icon name="alert-circle-outline"></ion-icon>
+
+        <span>
+          {{ errorMessage }}
+        </span>
+
+      </div>
+
+
+      <!-- =========================
+           TOMBOL LOGIN
+      ========================== -->
+
+      <ion-button
+        expand="block"
+        class="login-button"
+        (click)="login()"
+        [disabled]="loading">
+
+        <ion-icon
+          name="log-in-outline"
+          slot="start">
+        </ion-icon>
+
+        <span *ngIf="!loading">
+          Masuk
+        </span>
+
+        <span *ngIf="loading">
+          Memproses...
+        </span>
+
+      </ion-button>
+      <div class="forgot-password">
+        <ion-button
+          fill="clear"
+          size="small"
+          color="danger"
+          (click)="lupaPassword()">
+          Lupa Password?
+        </ion-button>
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <p class="footer-text">
+
+      CP-INSIGHT © 2026
+
+      <br>
+
+      SD Alo'oa
+
+    </p>
+
+  </div>
+
+</ion-content>

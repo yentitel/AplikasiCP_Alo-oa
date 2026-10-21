@@ -1,0 +1,183 @@
+.login-content {
+  --background: #f8f8f8;
+}
+
+.toolbar-custom {
+  --background: #b91c1c;
+  --color: white;
+}
+
+/* =========================
+   CONTAINER LOGIN
+   ========================= */
+
+.login-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px 20px;
+  box-sizing: border-box;
+}
+
+/* =========================
+   LOGO
+   ========================= */
+
+.login-logo {
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #b91c1c;
+
+  margin-bottom: 15px;
+
+  border: 5px solid white;
+
+  box-shadow: 0 6px 18px rgba(185, 28, 28, 0.25);
+}
+
+.login-logo ion-icon {
+  font-size: 50px;
+  color: white;
+}
+
+/* =========================
+   JUDUL
+   ========================= */
+
+h1 {
+  margin: 0;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #b91c1c;
+
+  text-align: center;
+}
+
+.subtitle {
+  margin: 8px 0 25px;
+
+  text-align: center;
+
+  color: #555;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  max-width: 320px;
+}
+
+/* =========================
+   CARD LOGIN
+   ========================= */
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 25px 20px;
+
+  box-sizing: border-box;
+
+  border-top: 5px solid #b91c1c;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.login-card h2 {
+  margin: 0;
+
+  text-align: center;
+
+  color: #222;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.login-card > p {
+  margin: 7px 0 25px;
+
+  text-align: center;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+/* =========================
+   INPUT
+   ========================= */
+
+ion-item {
+  --background: #fafafa;
+
+  --border-color: #e5e5e5;
+
+  --border-radius: 10px;
+
+  margin-bottom: 15px;
+
+  border-radius: 10px;
+}
+
+ion-item ion-icon {
+  color: #b91c1c;
+}
+
+ion-input {
+  --color: #222;
+
+  --placeholder-color: #999;
+}
+
+/* =========================
+   TOMBOL LOGIN
+   ========================= */
+
+.login-button {
+  margin-top: 25px;
+
+  --background: #b91c1c;
+
+  --background-hover: #991b1b;
+
+  --border-radius: 10px;
+
+  height: 50px;
+
+  font-weight: 700;
+
+  font-size: 15px;
+
+  box-shadow: 0 6px 15px rgba(185, 28, 28, 0.25);
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer-text {
+  margin-top: 25px;
+
+  color: #999;
+
+  font-size: 13px;
+
+  text-align: center;
+}

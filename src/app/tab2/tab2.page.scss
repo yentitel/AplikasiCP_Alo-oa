@@ -1,0 +1,798 @@
+/*==================================
+HEADER
+==================================*/
+
+.toolbar-custom{
+
+  --background:#1565c0;
+  --color:#fff;
+
+}
+
+ion-title{
+
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+
+}
+/* ==========================================
+   CONTENT
+========================================== */
+
+ion-content{
+  --background:#f4f6fb;
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+ion-card{
+
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+  margin-bottom:0px;
+
+}
+
+ion-card-title{
+
+  font-size:15px;
+  font-weight:bold;
+  color:#37474f;
+
+}
+
+ion-card-subtitle{
+
+  color:#777;
+
+}
+
+/* ==========================================
+   IMPORT EXCEL
+========================================== */
+
+.import-card{
+
+  background:white;
+
+}
+
+.upload-box{
+
+  text-align:center;
+  padding:25px;
+
+}
+
+.upload-icon{
+
+  font-size:50px;
+  color:#ec407a;
+  margin-bottom:0px;
+
+}
+
+.upload-box h2{
+
+  font-size:10px;
+  font-weight:bold;
+  color:#444;
+
+}
+
+.upload-box p{
+
+  color:#777;
+
+}
+
+.upload-box ion-button{
+
+  margin-top:6px;
+  width:220px;
+  height:45px;
+
+}
+
+/* ==========================================
+   INPUT
+========================================== */
+
+ion-item{
+
+  --border-radius:12px;
+  margin-bottom:0px;
+
+}
+
+ion-input,
+ion-select{
+
+  font-size:15px;
+
+}
+
+/* ==========================================
+   TABEL
+========================================== */
+
+.table-container{
+
+  overflow-x:auto;
+  width:100%;
+
+}
+
+table{
+
+  width:max-content;
+  min-width:100%;
+  border-collapse:collapse;
+
+}
+
+th{
+
+  background:#2563eb;
+  color:#fff;
+  padding:10px;
+  text-align:center;
+  white-space:nowrap;
+
+}
+
+td{
+
+  padding:8px;
+  border:1px solid #ddd;
+  text-align:center;
+  white-space:nowrap;
+
+}
+
+tr:nth-child(even){
+
+  background:#fafafa;
+
+}
+
+tr:hover{
+
+  background:#eef5ff;
+
+}
+
+/* ==========================================
+   DATA SISWA
+========================================== */
+
+ion-list{
+
+  background:transparent;
+
+}
+
+ion-item{
+
+  --background:white;
+  border-radius:15px;
+  margin-bottom:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+}
+
+/* Avatar */
+
+.avatar-icon{
+
+  font-size:52px;
+  color:#ec407a;
+
+}
+
+/* Nama */
+
+ion-item h2{
+
+  font-size:17px;
+  font-weight:bold;
+  color:#333;
+
+}
+
+/* Keterangan */
+
+ion-item p{
+
+  font-size:13px;
+  color:#777;
+
+}
+
+/* Badge */
+
+ion-badge{
+
+  margin-top:5px;
+  margin-right:5px;
+
+}
+
+/* Tombol */
+
+.btn-edit{
+
+  width:40px;
+  height:14px;
+
+  --border-radius:20px;
+
+}
+
+.btn-hapus{
+
+  width:40px;
+  height:14px;
+
+  --border-radius:10px;
+
+}
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+ion-button{
+
+  font-weight:bold;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+.upload-icon{
+
+  font-size:65px;
+
+}
+
+.upload-box ion-button{
+
+  width:100%;
+
+}
+
+table{
+
+  font-size:12px;
+
+}
+
+}
+/*=========================================
+  Tombol Lanjut
+=========================================*/
+
+.lanjut-button{
+
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+
+}
+
+.btn-lanjut{
+
+  width: 280px;
+  height: 55px;
+
+  font-size: 17px;
+  font-weight: bold;
+
+  --border-radius: 30px;
+
+  --box-shadow: 0 8px 18px rgba(0,0,0,.25);
+
+}
+ion-item {
+  --min-height: 10px !important; /* paksa turun dari 56px */
+}
+
+ion-grid {
+  --ion-grid-column-padding: 0px; /* kecilin jarak antar kolom */
+}
+/* RAPATKAN JARAK ANTAR CARD */
+.import-card {
+  margin-bottom: 2px !important; /* tadinya default 16px, kita bikin 8px */
+}
+
+.input-card {
+  margin-top: 0 !important; /* buang margin atas */
+}
+
+/* SEKALIAN KECILIN PADDING DALAM CARD BIAR LEBIH PADAT */
+.import-card ion-card-content {
+  padding-top: 2px !important;
+  padding-bottom: 4px !important;
+}
+
+.import-card ion-card-header {
+  padding-bottom: 4px !important; /* header "Import Data Nilai" dinaikin */
+}
+
+.upload-box {
+  padding: 4px 0 !important; /* isi tengah "DATA + Tombol" dikecilin */
+}
+
+.upload-icon {
+  font-size: 30px !important; /* ikon awan dikecilin dikit biar gak makan tempat */
+  margin-bottom: 2px !important;
+}
+
+.upload-box h2 {
+  font-size: 8px !important;
+  margin: 4px 0 !important;
+}
+/* KECILIN TOMBOL + UBAH AWAN JADI MERAH */
+.import-card .upload-icon {
+  color: #dc2626 !important; /* merah, sama kayak tab 1 */
+  font-size: 36px !important; /* tadinya 48px, kita kecilin */
+  margin-bottom: 6px !important;
+}
+
+.import-card .upload-btn {
+  --background: #dc2626 !important; /* tombol merah */
+  --background-activated: #b91c1c !important; /* pas ditekan jadi merah tua */
+  --color: white !important;
+  height: 36px !important; /* tadinya kegedean */
+  font-size: 12px !important;
+  font-weight: 600;
+  text-transform: none; /* biar gak caps semua */
+  --padding-start: 16px;
+  --padding-end: 16px;
+  border-radius: 20px !important;
+}
+
+.import-card .upload-btn ion-icon {
+  font-size: 12px !important; /* ikon folder dikecilin */
+  margin-right: 6px;
+}
+
+.import-card .upload-box h2 {
+  font-size: 13px !important;
+  font-weight: 600;
+  color: #374151;
+  margin: 4px 0 !important;
+}
+/* KECILIN TOMBOL PILIH FILE EXCEL */
+.import-card .upload-btn {
+  --background: #dc2626 !important; /* merah selaras tab 1 */
+  --background-activated: #b91c1c !important;
+  --color: white !important;
+  height: 32px !important; /* tadinya 36px, turunin lagi */
+  font-size: 11px !important; /* font lebih kecil */
+  font-weight: 300;
+  text-transform: none !important; /* biar "Pilih File Excel" normal */
+  --padding-start: 14px;
+  --padding-end: 14px;
+  border-radius: 16px !important; /* sudut lebih kecil */
+  width: auto !important; /* biar ngikutin isi teks, gak lebar2 */
+  min-width: 140px;
+}
+
+.import-card .upload-btn ion-icon {
+  font-size: 14px !important; /* ikon folder juga dikecilin */
+  margin-right: 5px;
+}
+
+/* sekalian kecilin awannya biar imbang */
+.import-card .upload-icon {
+  color: #dc2626 !important;
+  font-size: 32px !important; /* dari 36px turun jadi 32px */
+  margin-bottom: 2px !important;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  --background: transparent; // biar ga biru
+  --border-color: #e0e0e0;
+  margin-bottom: 2px;
+}
+
+.form-row ion-label {
+  flex: 0 0 170px; // naikin jadi 170px biar "Bahasa Indonesia" muat
+  font-weight: 600;
+  color: #333 !important; // paksa jadi hitam
+  font-size: 12px;
+}
+
+.form-row ion-label::after {
+  content: " = "; // tanda = nya
+  color: #333;
+}
+
+.form-row ion-input {
+  flex: 1;
+  color: #000; // inputan juga hitam
+  --padding-start: 8px;
+}
+
+.form-row ion-input::part(native) {
+  text-align: left; // biar rata kiri, enak dilihat
+}
+/* BIKIN IMPORT CARD MEPET */
+.import-card .upload-box {
+  padding: 0px 0 !important; 
+}
+
+.import-card .upload-icon {
+  font-size: 28px !important; /* kecilin ikon awan */
+  color: #dc2626 !important;
+  margin-bottom: 0px !important; /* jarak ikon ke teks DATA */
+}
+
+.import-card .upload-box h2 {
+  font-size: 12px !important; /* kecilin tulisan DATA */
+  font-weight: 50;
+  color: #374151;
+  margin: 0 0 1px 0 !important;
+}
+
+.import-card .upload-btn {
+  --background: #dc2626 !important;
+  --background-activated: #b91c1c !important;
+  --color: white !important;
+  height: 6px !important; /* tombol lebih pendek */
+  font-size: 11px !important;
+  font-weight: 300;
+  text-transform: none !important;
+  --padding-start: 2px;
+  --padding-end: 2px;
+  border-radius: 4px !important;
+  width: auto !important;
+  min-width: 10px;
+  margin-top: 0 !important; /* buang margin atas tombol */
+}
+
+.import-card .upload-btn ion-icon {
+  font-size: 0px !important;
+  margin-right: 0px;
+}
+
+/* Kecilin juga header card nya biar naik */
+.import-card ion-card-header {
+  padding-bottom: 0px !important;
+}
+
+.import-card ion-card-content {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+/* ==========================================
+   INPUT DATA MANUAL
+   ========================================== */
+
+.manual-form {
+  width: 100%;
+  margin-top: 15px;
+  padding: 5px 10px 15px;
+}
+
+/* Judul */
+.manual-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: #37474f;
+
+  margin-bottom: 15px;
+}
+
+.manual-title ion-icon {
+  font-size: 27px;
+}
+
+/* Baris input */
+.form-row {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 48px;
+
+  border-bottom: 1px solid #d6d6d6;
+
+  padding: 3px 5px;
+}
+
+/* Nama mata pelajaran */
+.form-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #37474f;
+
+  flex: 0 0 180px;
+}
+
+/* Tanda sama dengan */
+.equals {
+  font-size: 16px;
+  font-weight: 600;
+  color: #37474f;
+
+  width: 25px;
+  text-align: center;
+}
+
+/* Input setelah tanda = */
+.inline-input {
+  flex: 1;
+
+  --padding-start: 5px;
+  --padding-end: 5px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  --color: #222;
+  --placeholder-color: #999;
+
+  min-height: 40px;
+}
+
+/* Tombol */
+.button-group {
+  display: flex;
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.button-group ion-button {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* ==========================================
+   TAMPILAN HP
+   ========================================== */
+
+@media (max-width: 600px) {
+
+  .manual-form {
+    padding: 5px 5px 15px;
+  }
+
+  .manual-title {
+    font-size: 19px;
+  }
+
+  .form-row {
+    min-height: 45px;
+  }
+
+  .form-label {
+    flex: 0 0 145px;
+    font-size: 15px;
+  }
+
+  .equals {
+    width: 20px;
+  }
+
+  .inline-input {
+    font-size: 15px;
+  }
+
+  .button-group {
+    gap: 8px;
+  }
+
+  .button-group ion-button {
+    font-size: 14px;
+  }
+  /* ==========================================
+   PREVIEW DATA EXCEL
+   ========================================== */
+
+.preview-section {
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 10px 20px;
+}
+
+
+/* ==========================================
+   JUDUL PREVIEW
+   ========================================== */
+
+.preview-title {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.title-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-left ion-icon {
+  font-size: 27px;
+  color: #1976d2;
+}
+
+.title-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #37474f;
+}
+
+.title-subtitle {
+  margin-top: 3px;
+  font-size: 14px;
+  color: #666;
+}
+
+
+/* ==========================================
+   CONTAINER TABEL
+   ========================================== */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+
+  border-top: 1px solid #d5d5d5;
+  border-left: 1px solid #d5d5d5;
+}
+
+
+/* ==========================================
+   TABEL
+   ========================================== */
+
+.table-container table {
+  width: max-content;
+  min-width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 14px;
+}
+
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.table-container th {
+  background: #1976d2;
+  color: white;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  white-space: nowrap;
+
+  padding: 10px 12px;
+
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+
+/* ==========================================
+   DATA
+   ========================================== */
+
+.table-container td {
+  padding: 8px 12px;
+
+  text-align: center;
+
+  white-space: nowrap;
+
+  border-right: 1px solid #d5d5d5;
+  border-bottom: 1px solid #d5d5d5;
+
+  color: #222;
+}
+
+
+/* ==========================================
+   NAMA SISWA
+   ========================================== */
+
+.table-container td.nama {
+  text-align: left;
+
+  min-width: 180px;
+
+  font-weight: 500;
+}
+
+
+/* ==========================================
+   AKSI
+   ========================================== */
+
+.table-container td.aksi {
+  min-width: 95px;
+  white-space: nowrap;
+}
+
+.table-container td.aksi ion-button {
+  margin: 0;
+}
+
+
+/* ==========================================
+   BARIS GENAP
+   ========================================== */
+
+.table-container tbody tr:nth-child(even) {
+  background: #f5f8fc;
+}
+
+
+/* ==========================================
+   EFEK SAAT DISENTUH
+   ========================================== */
+
+.table-container tbody tr:active {
+  background: #e8f1fb;
+}
+
+
+/* ==========================================
+   TAMPILAN HP
+   ========================================== */
+
+@media (max-width: 600px) {
+
+  .preview-section {
+    padding: 0 5px 20px;
+  }
+
+  .title-text {
+    font-size: 18px;
+  }
+
+  .title-subtitle {
+    font-size: 13px;
+  }
+
+  .table-container table {
+    font-size: 13px;
+  }
+
+  .table-container th {
+    padding: 9px 10px;
+  }
+
+  .table-container td {
+    padding: 8px 10px;
+  }
+
+  .table-container td.nama {
+    min-width: 160px;
+  }
+
+}
+}

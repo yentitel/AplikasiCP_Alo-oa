@@ -1,0 +1,472 @@
+/*==================================
+HEADER
+==================================*/
+
+.toolbar-custom{
+
+  --background:#1565c0;
+  --color:#fff;
+
+}
+
+ion-title{
+
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+
+}
+
+
+/* ============================= */
+/* CONTAINER */
+/* ============================= */
+
+.dashboard-container {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 18px 16px 85px;
+}
+
+
+/* ============================= */
+/* HEADER */
+/* ============================= */
+
+.app-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.logo-wrapper {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 0px;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px solid #e5edf7;
+
+  box-shadow: 0 4px 14px rgba(23, 74, 135, 0.15);
+}
+
+.school-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.app-header h1 {
+  margin-top: -2px;
+  margin-bottom: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #000
+}
+
+
+/* ============================= */
+/* METHOD CARD */
+/* ============================= */
+
+.method-card {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  padding: 10px 12px;
+
+  background: white;
+
+  border-radius: 14px;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+
+  margin-bottom: 4px;
+}
+
+.method-icon {
+  width: 48px;
+  height: 48px;
+
+  min-width: 48px;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e8f1ff;
+}
+
+.method-icon ion-icon {
+  font-size: 27px;
+  color: #1565c0;
+}
+
+.method-content {
+  margin-left: 12px;
+}
+
+.method-content h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.method-content p {
+  margin: 3px 0 7px;
+
+  font-size: 11.5px;
+  line-height: 1.35;
+
+  color: #6b7785;
+}
+
+.method-badge {
+  display: inline-block;
+
+  padding: 4px 10px;
+
+  border-radius: 20px;
+
+  background: #e8f1ff;
+
+  color: #1565c0;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* ============================= */
+/* MENU */
+/* ============================= */
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  margin-bottom: 8px;
+}
+
+
+/* ============================= */
+/* MENU CARD */
+/* ============================= */
+
+.menu-card {
+  min-height: 67px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 9px 13px;
+
+  background: white;
+
+  border-radius: 13px;
+
+  border: 1px solid #e1e7ef;
+
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.045);
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+/* efek ketika ditekan */
+
+.menu-card:active {
+  transform: scale(0.98);
+}
+
+
+/* ============================= */
+/* ICON MENU */
+/* ============================= */
+
+.menu-icon {
+  width: 45px;
+  height: 45px;
+
+  min-width: 45px;
+
+  border-radius: 11px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-icon ion-icon {
+  font-size: 24px;
+}
+
+
+/* DATA */
+
+.data-card .menu-icon {
+  background: #e8f8f2;
+}
+
+.data-card .menu-icon ion-icon {
+  color: #000;
+}
+
+
+/* PROSES */
+
+.process-card .menu-icon {
+  background: #e8f8f2;
+}
+
+.process-card .menu-icon ion-icon {
+  color: #e65100;
+}
+
+
+/* HASIL */
+
+.result-card .menu-icon {
+  background: #e8f8f2;
+}
+
+.result-card .menu-icon ion-icon {
+  color: #6855c7;
+}
+
+
+/* ============================= */
+/* TEXT MENU */
+/* ============================= */
+
+.menu-text {
+  flex: 1;
+
+  margin-left: 11px;
+}
+
+.menu-text h3 {
+  margin: 0;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  color: #000;
+
+  text-transform: uppercase;
+}
+
+.menu-text p {
+  margin: 2px 0 0;
+
+  font-size: 11px;
+
+  color: #7b8794;
+}
+
+
+/* ============================= */
+/* ARROW */
+/* ============================= */
+
+.arrow-icon {
+  font-size: 19px;
+
+  color: #9aa7b5;
+
+  margin-left: 8px;
+}
+
+
+/* ============================= */
+/* INFO CARD */
+/* ============================= */
+
+.info-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: white;
+  border-radius: 13px;
+  border: 1px solid #e1e7ef;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
+  padding: 12px 8px;
+}
+
+.info-item {
+  flex: 1;
+  text-align: center;
+}
+
+.info-item strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000; /* default jadi hitam */
+}
+
+.info-item strong.danger { /* ini yang baru */
+  color: #D32F2F; /* merah */
+}
+.hasil-icon {
+  background: linear-gradient(135deg, #FFEBEE 0%, #E8F5E9 100%); /* bg kotak merah muda ke hijau muda */
+}
+
+.hasil-icon ion-icon {
+  color: #D32F2F !important; /* icon nya merah aja biar kontras */
+}
+
+.info-item span {
+  display: block;
+  margin-top: 2px;
+  font-size: 10px;
+  color: #000; 
+  font-weight: 600;
+}
+
+.divider {
+  width: 1px;
+  height: 30px;
+  background: #e0e5eb;
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 400px) {
+
+  .dashboard-container {
+    padding: 14px 12px 80px;
+  }
+
+  .app-header h1 {
+    font-size: 24px;
+  }
+
+  .app-header h2 {
+    font-size: 14px;
+  }
+
+  .method-content h3 {
+    font-size: 14px;
+  }
+
+  .method-content p {
+    font-size: 10.5px;
+  }
+
+  .menu-card {
+    min-height: 62px;
+  }
+
+  .menu-icon {
+    width: 41px;
+    height: 41px;
+    min-width: 41px;
+  }
+
+  .menu-icon ion-icon {
+    font-size: 22px;
+  }
+
+  .menu-text h3 {
+    font-size: 13px;
+  }
+
+  .menu-text p {
+    font-size: 10px;
+  }
+/* FORCE SEMUA TEKS JADI HITAM */
+ion-content,
+.dashboard-container,
+.app-header h1,
+.app-header h2,
+.method-content h3,
+.method-content p,
+.menu-text h3,
+.menu-text p,
+.info-item span {
+  color: #000000 !important;
+}
+/* Icon DATA SISWA = Biru */
+.menu-card:nth-child(1) .menu-icon ion-icon {
+  color: #1565C0;
+}
+
+/* Icon PROSES = Oranye */
+.menu-card:nth-child(2) .menu-icon ion-icon {
+  color: #F57C00;
+}
+
+/* Icon HASIL = Gradasi Merah Hijau */
+.menu-card:nth-child(3) .menu-icon ion-icon {
+  background: linear-gradient(135deg, #FFEBEE 0%, #E8F5E9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+} /* tutup @media */
+
+/* ============================= */
+/* RIPPLE EFFECT */
+/* ============================= */
+
+.menu-card {
+  position: relative; /* biar ripple nya nggak keluar card */
+  overflow: hidden;   /* biar ripple kepotong sudut */
+}
+
+ion-ripple-effect {
+  color: rgba(21, 101, 192, 0.2); /* ripple biru transparan */
+}
+/* ============================= */
+/* MENU ACTION BUTTON - VERSI KECIL */
+/* ============================= */
+
+.menu-action {
+  padding: 4px 10px;
+  border: 1.5px solid #1565C0;
+  color: #1565C0;
+  background: transparent;
+  border-radius: 16px;
+  font-size: 9px; /* INI YG BIKIN KECIL */
+  font-weight: 600; /* INI BIKIN NGGAK TEBAL BANGET */
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+/* efek pas di tap/hover */
+.menu-card:active .menu-action {
+  background: #1565C0;
+  color: white;
+}
+
+/* warna beda tiap menu */
+.process-card .menu-action { border-color: #F57C00; color: #F57C00; }
+.process-card:active .menu-action { background: #F57C00; color: white; }
+
+.result-card .menu-action { border-color: #D32F2F; color: #D32F2F; }
+.result-card:active .menu-action { background: #D32F2F; color: white; }

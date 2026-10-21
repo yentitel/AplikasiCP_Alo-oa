@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar style="--background: #B71C1C; --color: white;">
+    <ion-title>CP-Insight</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="dashboard-container">
+
+    <div class="app-header">
+
+      <div class="logo-wrapper">
+  <img
+    src="assets/images/logo.jpeg"
+    alt="Logo SD Alo'oa"
+    class="school-logo"
+  />
+    </div>
+      <h1>CP-Insight</h1>
+    </div>
+    <div class="method-card">
+
+      <div class="method-icon">
+        <ion-icon name="git-network-outline"></ion-icon>
+      </div>
+
+      <div class="method-content">
+
+        <h3>
+          Agglomerative Hierarchical Clustering
+        </h3>
+
+        <p>
+          Metode pengelompokan siswa berdasarkan
+          kemiripan capaian pembelajaran.
+        </p>
+
+      </div>
+
+    </div>
+
+
+   <!-- MENU UTAMA -->
+<div class="menu-container">
+
+ <!-- DATA SISWA -->
+<div class="menu-card data-card" routerLink="/tabs/tab2" button>
+  <ion-ripple-effect></ion-ripple-effect>
+  
+  <div class="menu-icon">
+    <ion-icon name="person-circle-outline"></ion-icon>
+  </div>
+
+  <div class="menu-text">
+    <h3>DATA SISWA</h3>
+    <p>Input dan kelola data nilai siswa</p>
+  </div>
+
+  <span class="menu-action">ISI</span> <!-- GANTI INI -->
+</div>
+
+<!-- PROSES AHC -->
+<div class="menu-card process-card" routerLink="/tabs/tab3" button>
+  <ion-ripple-effect></ion-ripple-effect>
+  <div class="menu-icon">
+    <ion-icon name="git-merge-outline"></ion-icon>
+  </div>
+  <div class="menu-text">
+    <h3>PROSES AHC</h3>
+    <p>Jalankan proses clustering</p>
+  </div>
+  <span class="menu-action">JALANKAN</span> <!-- GANTI INI -->
+</div>
+
+<!-- HASIL CLUSTERING -->
+<div class="menu-card result-card" routerLink="/tabs/tab4" button>
+  <ion-ripple-effect></ion-ripple-effect>
+  <div class="menu-icon hasil-icon">
+    <ion-icon name="bar-chart"></ion-icon>
+  </div>
+  <div class="menu-text">
+    <h3>HASIL CLUSTERING</h3>
+    <p>Lihat hasil, dendrogram dan evaluasi</p>
+  </div>
+  <span class="menu-action">LIHAT</span> <!-- GANTI INI -->
+</div>
+</div>
+
+
+   <!-- INFORMASI SINGKAT -->
+    <div class="info-card">
+
+      <div class="info-item">
+        <strong class="danger">{{ jumlahSiswa }}</strong>  <!-- TAMBAH class danger -->
+        <span>Siswa</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="info-item">
+        <strong class="danger">{{ jumlahCluster }}</strong>  <!-- TAMBAH class danger -->
+        <span>Cluster</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="info-item">
+        <strong class="danger">{{ status }}</strong>  <!-- TAMBAH class danger -->
+        <span>Status</span>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

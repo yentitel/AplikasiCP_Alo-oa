@@ -1,0 +1,462 @@
+<ion-header>
+  <ion-toolbar style="--background: #B71C1C; --color: white;">
+
+    <ion-title>
+
+      <ion-icon name="analytics-outline"></ion-icon>
+
+      DATA SISWA
+
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<!-- ===========================
+     IMPORT EXCEL
+=========================== -->
+
+<ion-card class="import-card">
+  <ion-card-header>
+  <ion-card-title>
+  <ion-icon name="document-text-outline" color="danger"></ion-icon>
+      Import Data Nilai
+  </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+  <div class="upload-box">
+
+      <ion-icon
+
+        class="upload-icon"
+
+        name="cloud-upload-outline">
+
+      </ion-icon>
+
+      <h2>DATA</h2>
+
+      <input
+
+        #fileInput
+
+        hidden
+
+        type="file"
+
+        accept=".xlsx,.xls"
+
+        (change)="importExcel($event)">
+
+      <ion-button
+
+        color="danger"
+
+        shape="round"
+
+        (click)="fileInput.click()">
+
+        <ion-icon
+
+          slot="start"
+
+          name="folder-open-outline">
+
+        </ion-icon>
+
+        Pilih File Excel
+
+      </ion-button>
+
+    </div>
+
+  </ion-card-content>
+
+</ion-card>
+
+
+<!-- ==========================================
+     INPUT DATA MANUAL
+========================================== -->
+
+<div class="manual-form">
+
+  <div class="manual-title">
+    <ion-icon name="person-circle-outline"></ion-icon>
+    <span>Input Data Manual</span>
+  </div>
+
+  <!-- NAMA SISWA -->
+  <div class="form-row">
+    <span class="form-label">Nama Siswa</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="text"
+      [(ngModel)]="siswa.nama"
+      placeholder="Masukkan nama siswa">
+    </ion-input>
+  </div>
+
+  <!-- KELAS -->
+  <div class="form-row">
+    <span class="form-label">Kelas</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="text"
+      [(ngModel)]="siswa.kelas"
+      placeholder="Masukkan kelas">
+    </ion-input>
+  </div>
+
+  <!-- AGAMA -->
+  <div class="form-row">
+    <span class="form-label">Agama</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="number"
+      [(ngModel)]="siswa.agama">
+    </ion-input>
+  </div>
+
+  <!-- PPKN -->
+  <div class="form-row">
+    <span class="form-label">PPKn</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="number"
+      [(ngModel)]="siswa.ppkn">
+    </ion-input>
+  </div>
+
+  <!-- BAHASA INDONESIA -->
+  <div class="form-row">
+    <span class="form-label">Bahasa Indonesia</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="number"
+      [(ngModel)]="siswa.indonesia">
+    </ion-input>
+  </div>
+
+  <!-- MATEMATIKA -->
+  <div class="form-row">
+    <span class="form-label">Matematika</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="number"
+      [(ngModel)]="siswa.matematika">
+    </ion-input>
+  </div>
+
+  <!-- PJOK -->
+  <div class="form-row">
+    <span class="form-label">PJOK</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="number"
+      [(ngModel)]="siswa.pjok">
+    </ion-input>
+  </div>
+
+  <!-- SENI BUDAYA -->
+  <div class="form-row">
+    <span class="form-label">Seni Budaya</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="number"
+      [(ngModel)]="siswa.seni">
+    </ion-input>
+  </div>
+
+  <!-- MULOK -->
+  <div class="form-row">
+    <span class="form-label">Mulok</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="number"
+      [(ngModel)]="siswa.mulok">
+    </ion-input>
+  </div>
+
+  <!-- IPAS -->
+  <div class="form-row">
+    <span class="form-label">IPAS</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="number"
+      [(ngModel)]="siswa.ipas">
+    </ion-input>
+  </div>
+
+  <!-- BAHASA INGGRIS -->
+  <div class="form-row">
+    <span class="form-label">Bahasa Inggris</span>
+    <span class="equals">=</span>
+
+    <ion-input
+      class="inline-input"
+      type="number"
+      [(ngModel)]="siswa.inggris">
+    </ion-input>
+  </div>
+
+  <!-- TOMBOL -->
+  <div class="button-group">
+
+    <ion-button
+      color="success"
+      size="small"
+      (click)="isEdit ? updateData() : simpanData()">
+
+      <ion-icon
+        slot="start"
+        [name]="isEdit ? 'create-outline' : 'save-outline'">
+      </ion-icon>
+
+      {{ isEdit ? 'Update' : 'Simpan' }}
+
+    </ion-button>
+
+    <ion-button
+      color="danger"
+      size="small"
+      (click)="resetForm()">
+
+      <ion-icon
+        slot="start"
+        name="refresh-outline">
+      </ion-icon>
+
+      Hapus
+
+    </ion-button>
+
+  </div>
+
+</div>
+<!-- ===========================
+     PREVIEW DATA EXCEL
+=========================== -->
+
+<div *ngIf="dataExcel.length > 0" class="preview-section">
+
+  <!-- JUDUL -->
+  <div class="preview-title">
+
+    <div class="title-left">
+
+      <ion-icon name="reader-outline"></ion-icon>
+
+      <div>
+        <div class="title-text">
+          Preview Data Nilai Siswa
+        </div>
+
+        <div class="title-subtitle">
+          Jumlah Data : {{ dataExcel.length }} Siswa
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TABEL -->
+  <div class="table-container">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>Aksi</th>
+          <th>No</th>
+          <th>Nama</th>
+          <th>Kelas</th>
+          <th>Agama</th>
+          <th>PPKn</th>
+          <th>B. Indonesia</th>
+          <th>Matematika</th>
+          <th>PJOK</th>
+          <th>Seni</th>
+          <th>Mulok</th>
+          <th>IPAS</th>
+          <th>B. Inggris</th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        <tr
+          *ngFor="let item of dataExcel; let i = index">
+
+          <!-- AKSI -->
+          <td class="aksi">
+
+            <ion-button
+              fill="clear"
+              color="warning"
+              size="small"
+              (click)="editData(i)">
+
+              <ion-icon
+                name="create-outline">
+              </ion-icon>
+
+            </ion-button>
+
+
+            <ion-button
+              fill="clear"
+              color="danger"
+              size="small"
+              (click)="hapusData(i)">
+
+              <ion-icon
+                name="trash-outline">
+              </ion-icon>
+
+            </ion-button>
+
+          </td>
+
+
+          <!-- NO -->
+          <td>
+            {{ i + 1 }}
+          </td>
+
+
+          <!-- NAMA -->
+          <td class="nama">
+            {{ item.nama }}
+          </td>
+
+
+          <!-- KELAS -->
+          <td>
+            {{ item.kelas }}
+          </td>
+
+
+          <!-- NILAI -->
+          <td>
+            {{ item.agama }}
+          </td>
+
+          <td>
+            {{ item.ppkn }}
+          </td>
+
+          <td>
+            {{ item.indonesia }}
+          </td>
+
+          <td>
+            {{ item.matematika }}
+          </td>
+
+          <td>
+            {{ item.pjok }}
+          </td>
+
+          <td>
+            {{ item.seni }}
+          </td>
+
+          <td>
+            {{ item.mulok }}
+          </td>
+
+          <td>
+            {{ item.ipas }}
+          </td>
+
+          <td>
+            {{ item.inggris }}
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+<!-- ===========================
+     SIMPAN DATA KE DATABASE
+=========================== -->
+
+<div 
+  class="simpan-button"
+  *ngIf="dataExcel.length > 0">
+
+  <ion-button
+    expand="block"
+    color="success"
+    shape="round"
+    (click)="simpanExcelKeDatabase()">
+
+    <ion-icon
+      slot="start"
+      name="save-outline">
+    </ion-icon>
+
+    Simpan Data 
+
+  </ion-button>
+
+</div>
+
+<!-- ===========================
+     TOMBOL LANJUT
+=========================== -->
+
+<div class="lanjut-button">
+
+  <ion-button
+    routerLink="/tabs/tab3"
+    color="tertiary"
+    shape="round"
+    class="btn-lanjut">
+
+    <ion-icon
+      slot="start"
+      name="analytics-outline">
+    </ion-icon>
+
+    Lanjut Proses AHC
+
+  </ion-button>
+
+</div>
+
+</ion-content>

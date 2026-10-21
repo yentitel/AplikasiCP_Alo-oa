@@ -1,0 +1,1471 @@
+/* =========================================================
+   TAB 4 - HASIL CLUSTERING
+   ========================================================= */
+
+
+/* =========================================================
+   WARNA UTAMA
+   ========================================================= */
+
+:host {
+
+  --biru-utama: #2563eb;
+  --biru-gelap: #1d4ed8;
+  --biru-tua: #1e3a8a;
+
+  --biru-muda: #eff6ff;
+  --biru-border: #bfdbfe;
+  --biru-border-gelap: #93c5fd;
+
+  --hitam: #000000;
+  --abu-gelap: #111827;
+
+  display: block;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.toolbar-custom {
+
+  --background: #1565c0;
+  --color: #ffffff;
+
+}
+
+
+ion-title {
+
+  font-size: 18px;
+
+  font-weight: 900;
+
+  text-align: center;
+
+}
+
+
+ion-title ion-icon {
+
+  margin-right: 5px;
+
+  vertical-align: middle;
+
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.hasil-content {
+
+  --background: #f8fafc;
+
+  padding-bottom: 30px;
+
+}
+
+
+/* =========================================================
+   CARD UMUM
+   ========================================================= */
+
+ion-card {
+
+  margin: 10px 4px !important;
+
+  background: #ffffff;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 13px !important;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.07) !important;
+
+  overflow: hidden;
+
+}
+
+/* =====================================================
+   AREA CLUSTER
+   ===================================================== */
+
+.cluster-scroll {
+  display: flex;
+  gap: 12px;
+
+  width: 100%;
+  padding: 4px 2px 12px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+}
+
+
+/* =====================================================
+   CARD CLUSTER
+   ===================================================== */
+
+.cluster-card {
+  flex: 0 0 auto;
+
+  margin: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #d8e3f0;
+  border-top: 4px solid #1769e0;
+
+  border-radius: 14px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   UKURAN CARD
+   ===================================================== */
+
+/* 1 CLUSTER */
+
+.cluster-count-1 .cluster-card {
+  width: 100%;
+}
+
+
+/* 2 CLUSTER
+   Dua card memenuhi satu layar */
+
+.cluster-count-2 .cluster-card {
+  width: calc((100vw - 28px) / 2);
+}
+
+
+/* 3 CLUSTER
+   Tiga card memenuhi satu layar */
+
+.cluster-count-3 .cluster-card {
+  width: calc((100vw - 40px) / 3);
+}
+
+
+/* 4 ATAU 5 CLUSTER
+   Card diperbesar dan bisa digeser */
+
+.cluster-count-many .cluster-card {
+  width: 82vw;
+  min-width: 300px;
+  max-width: 380px;
+}
+
+
+/* =====================================================
+   ISI CARD
+   ===================================================== */
+
+.cluster-card ion-card-content {
+  padding: 12px;
+}
+
+
+/* =====================================================
+   BAGIAN ATAS
+   ===================================================== */
+
+.cluster-top {
+  display: grid;
+
+  grid-template-columns:
+    44px
+    1fr
+    1fr;
+
+  gap: 8px;
+
+  align-items: stretch;
+
+  margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   NOMOR CLUSTER
+   ===================================================== */
+
+.cluster-number {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #1769e0;
+
+  color: #ffffff;
+
+  border-radius: 10px;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+
+/* =====================================================
+   CARD CAPAIAN & RATA-RATA
+   ===================================================== */
+
+.info-box {
+  min-height: 44px;
+
+  padding: 7px 9px;
+
+  background: #f1f7ff;
+
+  border: 1px solid #cbdff5;
+
+  border-radius: 9px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.info-box span {
+  font-size: 10px;
+
+  font-weight: 600;
+
+  color: #374151;
+
+  margin-bottom: 2px;
+}
+
+
+.info-box strong {
+  font-size: 12px;
+
+  font-weight: 800;
+
+  color: #111111;
+
+  line-height: 1.2;
+}
+
+
+/* =====================================================
+   MAPEL DOMINAN
+   ===================================================== */
+
+.dominant-line {
+  display: flex;
+
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 5px;
+
+  margin: 4px 0 13px;
+
+  padding-bottom: 9px;
+
+  border-bottom: 1px solid #dce5ef;
+}
+
+
+.dominant-line ion-icon {
+  font-size: 20px;
+
+  color: #f5b400;
+
+  flex-shrink: 0;
+}
+
+
+.dominant-line strong {
+  font-size: 11px;
+
+  font-weight: 800;
+
+  color: #111111;
+}
+
+
+.dominant-line span {
+  font-size: 11px;
+
+  font-weight: 800;
+
+  color: #111111;
+}
+
+
+/* =====================================================
+   REKOMENDASI
+   TIDAK ADA CARD
+   ===================================================== */
+
+.recommendation-section {
+  margin-bottom: 14px;
+}
+
+
+.recommendation-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-bottom: 5px;
+}
+
+
+.recommendation-title ion-icon {
+  font-size: 19px;
+
+  color: #1769e0;
+}
+
+
+.recommendation-title strong {
+  font-size: 11px;
+
+  font-weight: 800;
+
+  color: #111111;
+}
+
+
+.recommendation-section p {
+  margin: 0;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+
+  font-weight: 600;
+
+  color: #111111;
+
+  text-align: left;
+}
+
+
+/* =====================================================
+   ANGGOTA CLUSTER
+   ===================================================== */
+
+.member-section {
+  margin-top: 4px;
+}
+
+
+.member-heading {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  margin-bottom: 7px;
+}
+
+
+.member-heading strong {
+  font-size: 11px;
+
+  font-weight: 800;
+
+  color: #111111;
+}
+
+
+.member-heading ion-badge {
+  --background: #1769e0;
+  --color: #ffffff;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  padding: 4px 7px;
+
+  border-radius: 10px;
+}
+
+
+/* =====================================================
+   TABEL
+   ===================================================== */
+
+.cluster-table {
+  width: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid #b9cee5;
+
+  border-radius: 8px;
+}
+
+
+.cluster-table table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+
+.cluster-table th {
+  background: #1769e0;
+
+  color: #ffffff;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  padding: 7px 5px;
+
+  text-align: center;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+
+.cluster-table th:last-child {
+  border-right: none;
+}
+
+
+.cluster-table td {
+  font-size: 9px;
+
+  font-weight: 600;
+
+  color: #111111;
+
+  padding: 7px 5px;
+
+  text-align: center;
+
+  border-top: 1px solid #d6e1ed;
+
+  border-right: 1px solid #d6e1ed;
+
+  background: #ffffff;
+}
+
+
+.cluster-table td:last-child {
+  border-right: none;
+}
+
+
+.cluster-table tbody tr:nth-child(even) td {
+  background: #f1f7ff;
+}
+/* =========================================================
+   SEMUA ISI TABEL HITAM TEBAL
+   ========================================================= */
+
+.cluster-table table {
+  color: #000000;
+}
+
+
+/* Nomor, nama siswa, dan kelas */
+.cluster-table th,
+.cluster-table td {
+  color: #000000 !important;
+  font-weight: 900 !important;
+}
+
+
+/* Nomor siswa */
+.cluster-table td:first-child {
+  color: #000000 !important;
+  font-weight: 900 !important;
+}
+
+
+/* Nama siswa */
+.cluster-table .student-name {
+  color: #000000 !important;
+  font-weight: 900 !important;
+}
+
+
+/* Kelas */
+.cluster-table .class-badge {
+  color: #000000 !important;
+  font-weight: 900 !important;
+}
+
+
+/* Angka jumlah siswa di badge */
+.cluster-table + * {
+  color: #000000;
+}
+
+.member-badge {
+  color: #000000 !important;
+  font-weight: 900 !important;
+}
+
+/* =====================================================
+   NAMA SISWA
+   ===================================================== */
+
+.student-name {
+  text-align: left !important;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   BADGE KELAS
+   ===================================================== */
+
+.class-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 24px;
+
+  padding: 3px 6px;
+
+  background: #e8f2ff;
+
+  color: #1769e0;
+
+  border: 1px solid #b9d5f5;
+
+  border-radius: 10px;
+
+  font-size: 8px;
+
+  font-weight: 800;
+}
+
+
+/* =====================================================
+   RESPONSIVE HP KECIL
+   ===================================================== */
+
+@media (max-width: 380px) {
+
+  .cluster-count-2 .cluster-card {
+    width: 88vw;
+  }
+
+  .cluster-count-3 .cluster-card {
+    width: 82vw;
+  }
+
+  .cluster-count-many .cluster-card {
+    width: 86vw;
+  }
+
+}
+
+/* =========================================================
+   DENDROGRAM
+   ========================================================= */
+
+.dendrogram-card {
+
+  border-top: 3px solid var(--biru-utama) !important;
+
+}
+
+
+.dendrogram-wrapper {
+
+  width: 100%;
+
+  overflow-x: auto;
+
+  overflow-y: hidden;
+
+  padding: 7px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #bfdbfe;
+
+  border-radius: 8px;
+
+  -webkit-overflow-scrolling: touch;
+
+}
+
+
+.dendrogram-wrapper img {
+
+  display: block;
+
+  width: 100%;
+
+  min-width: 650px;
+
+  height: auto;
+
+  border-radius: 6px;
+
+}
+
+
+/* =========================================================
+   DENDROGRAM INFO
+   ========================================================= */
+
+.dendrogram-info {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-bottom: 8px;
+
+  padding: 8px;
+
+  background: #eff6ff;
+
+  border: 1px solid #bfdbfe;
+
+  border-radius: 8px;
+
+}
+
+
+.dendrogram-info ion-icon {
+
+  color: #000000;
+
+  font-size: 15px;
+
+}
+
+
+.dendrogram-info span {
+
+  color: #000000;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+}
+
+
+.dendrogram-info strong {
+
+  color: #000000;
+
+  font-weight: 900;
+
+}
+
+
+/* =========================================================
+   DAFTAR CLUSTER DENDROGRAM
+   ========================================================= */
+
+.dendrogram-cluster-list {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: 9px;
+
+}
+
+
+.dendrogram-cluster-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 5px 7px;
+
+  background: #eff6ff;
+
+  border: 1px solid #bfdbfe;
+
+  border-radius: 7px;
+
+}
+
+
+.dendrogram-cluster-number {
+
+  width: 20px;
+
+  height: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #2563eb;
+
+  color: #ffffff;
+
+  border-radius: 5px;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+}
+
+
+.dendrogram-cluster-text {
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+.dendrogram-cluster-text strong {
+
+  color: #000000;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+}
+
+
+.dendrogram-cluster-text span {
+
+  color: #000000;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+}
+/* ==========================================
+   JUDUL DENDROGRAM & EVALUASI
+   ========================================== */
+
+.section-card-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.section-card-title .title-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eaf2ff;
+  border-radius: 10px;
+}
+
+.section-card-title .title-icon ion-icon {
+  font-size: 22px;
+  color: #d62828;
+}
+
+.section-card-title ion-card-title {
+  margin: 0;
+  padding: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #111827;
+}
+.dendrogram-card {
+  margin-top: 8px;
+}
+
+.dendrogram-card ion-card-header {
+  padding-bottom: 8px;
+}
+
+.dendrogram-card ion-card-content {
+  padding-top: 8px;
+}
+
+
+/* ==========================================
+   NILAI EVALUASI
+========================================== */
+
+.metric-value {
+  margin-left: auto;
+
+  font-size: 14px !important;
+  font-weight: 800 !important;
+
+  color: #000000 !important;
+
+  background: transparent !important;
+
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+
+  box-shadow: none !important;
+
+  min-width: auto !important;
+  width: auto !important;
+
+  text-align: right;
+}
+/* ==========================================
+   JUDUL EVALUASI CLUSTERING
+========================================== */
+
+.evaluation-card .section-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.evaluation-card .title-icon {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #dbeafe;
+  border-radius: 10px;
+
+  margin: 0;
+  padding: 0;
+}
+
+.evaluation-card .title-icon ion-icon {
+  font-size: 20px;
+  color: #dc2626;
+  margin: 0;
+}
+
+.evaluation-card .section-card-title > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+}
+
+.evaluation-card .section-card-title ion-card-title {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+
+  color: #1e293b !important;
+}
+
+.evaluation-card .section-card-title p {
+  margin: 4px 0 0 0;
+
+  font-size: 11px;
+  line-height: 1.3;
+
+  color: #64748b;
+}
+/* =========================================================
+   METRIC
+   ========================================================= */
+
+.metric-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 9px;
+
+  margin-bottom: 7px;
+
+  background: #ffffff;
+
+  border: 1px solid #bfdbfe;
+
+  border-radius: 8px;
+
+}
+
+
+.metric-item:last-child {
+
+  margin-bottom: 0;
+
+}
+
+
+.metric-icon {
+
+  width: 29px;
+
+  height: 29px;
+
+  min-width: 29px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #dbeafe;
+
+  color: #000000;
+
+  border-radius: 7px;
+
+}
+
+
+.metric-icon ion-icon {
+
+  color: #000000;
+
+  font-size: 15px;
+
+}
+
+
+.metric-info {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+
+.metric-info h3 {
+
+  margin: 0;
+
+  color: #000000;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+}
+
+
+.metric-info p {
+
+  margin: 2px 0 0;
+
+  color: #000000;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+}
+
+
+.metric-value {
+
+  min-width: 45px;
+
+  padding: 5px 6px;
+
+  background: #2563eb;
+
+  color: #ffffff;
+
+  border-radius: 6px;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  text-align: center;
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-state {
+
+  padding: 18px 8px;
+
+  color: #000000;
+
+  text-align: center;
+
+}
+
+
+.empty-state ion-icon {
+
+  color: #000000;
+
+  font-size: 30px;
+
+}
+
+
+.empty-state p {
+
+  margin: 5px 0 0;
+
+  color: #000000;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+}
+
+
+/* ==========================================
+   KESIMPULAN - SATU BARIS
+========================================== */
+
+.conclusion-section {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+
+  margin: 20px 16px 0 16px;
+  padding: 14px 4px 20px 4px;
+
+  border-top: 3px solid #dc2626;
+
+  color: #1e293b;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ICON */
+
+.conclusion-icon {
+  flex-shrink: 0;
+
+  font-size: 19px;
+
+  color: #dc2626;
+
+  margin-top: 1px;
+}
+
+/* KATA "KESIMPULAN =" */
+
+.conclusion-label {
+  flex-shrink: 0;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  color: #1e293b;
+}
+
+/* ISI KESIMPULAN */
+
+.conclusion-text {
+  font-size: 13px;
+  font-weight: 700;
+
+  color: #1e293b;
+
+  line-height: 1.6;
+}
+/* ==========================================
+   TOMBOL EXPORT PDF
+========================================== */
+
+.button-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Memberi ruang agar tombol tidak tertutup
+     oleh menu navigasi di bagian bawah */
+  padding-top: 15px;
+  padding-bottom: 120px;
+
+  margin: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.export-btn {
+  --background: #dc2626 !important;
+  --background-hover: #b91c1c !important;
+  --background-activated: #991b1b !important;
+
+  --color: #ffffff !important;
+
+  --border-radius: 25px !important;
+
+  height: 44px !important;
+  min-height: 44px !important;
+
+  padding-left: 22px !important;
+  padding-right: 22px !important;
+
+  font-size: 13px !important;
+  font-weight: 700 !important;
+
+  text-transform: none !important;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.25);
+
+  position: relative;
+  z-index: 20;
+}
+
+.export-btn ion-icon {
+  font-size: 17px;
+  margin-right: 7px;
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+.cluster-column,
+.cluster-table-wrapper {
+
+  animation: fadeIn 0.35s ease;
+
+}
+
+
+@keyframes fadeIn {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(5px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / DESKTOP
+   ========================================================= */
+
+@media (min-width: 768px) {
+
+  .hasil-content {
+
+    padding-left: 2%;
+
+    padding-right: 2%;
+
+  }
+
+
+  ion-card {
+
+    margin-left: 0 !important;
+
+    margin-right: 0 !important;
+
+  }
+
+
+  .cluster-column {
+
+    min-width: 0;
+
+  }
+
+}
+
+
+/* =========================================================
+   HP
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  .hasil-content {
+
+    padding-left: 0;
+
+    padding-right: 0;
+
+  }
+
+
+  ion-card {
+
+    margin-left: 2px !important;
+
+    margin-right: 2px !important;
+
+  }
+
+
+  /*
+     Pada HP, jika 1-3 cluster,
+     tetap dibuat memenuhi layar.
+  */
+
+  .cluster-column {
+
+    min-width: 0;
+
+  }
+
+
+  .cluster-horizontal {
+
+    gap: 8px;
+
+  }
+
+
+  .cluster-horizontal:has(
+    .cluster-column:nth-child(1):last-child
+  ) .cluster-column {
+
+    width: 100%;
+
+    min-width: 100%;
+
+  }
+
+
+  .cluster-horizontal:has(
+    .cluster-column:nth-child(2):last-child
+  ) .cluster-column {
+
+    width: calc((100vw - 28px) / 2);
+
+    min-width: calc((100vw - 28px) / 2);
+
+  }
+
+
+  .cluster-horizontal:has(
+    .cluster-column:nth-child(3):last-child
+  ) .cluster-column {
+
+    width: calc((100vw - 36px) / 3);
+
+    min-width: calc((100vw - 36px) / 3);
+
+  }
+
+
+  /*
+     4 dan 5 cluster tetap dapat
+     digeser horizontal di HP
+     agar tulisan tidak terlalu kecil.
+  */
+
+  .cluster-horizontal:has(
+    .cluster-column:nth-child(4):last-child
+  ) .cluster-column {
+
+    width: 260px;
+
+    min-width: 260px;
+
+  }
+
+
+  .cluster-horizontal:has(
+    .cluster-column:nth-child(5):last-child
+  ) .cluster-column {
+
+    width: 245px;
+
+    min-width: 245px;
+
+  }
+
+
+  .anggota-table td,
+  .anggota-table th {
+
+    font-size: 8px;
+
+  }
+
+
+  .recommendation-box p {
+
+    font-size: 8px;
+
+  }
+
+}
+
+
+/* =========================================================
+   HP SANGAT KECIL
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .cluster-horizontal:has(
+    .cluster-column:nth-child(2):last-child
+  ) .cluster-column {
+
+    width: calc((100vw - 24px) / 2);
+
+    min-width: calc((100vw - 24px) / 2);
+
+  }
+
+
+  .cluster-horizontal:has(
+    .cluster-column:nth-child(3):last-child
+  ) .cluster-column {
+
+    width: 220px;
+
+    min-width: 220px;
+
+  }
+
+
+  .cluster-column {
+
+    font-size: 8px;
+
+  }
+
+
+  .cluster-title-text h2 {
+
+    font-size: 12px;
+
+  }
+
+
+  .info-box strong {
+
+    font-size: 9px;
+
+  }
+
+
+  .anggota-table td,
+  .anggota-table th {
+
+    font-size: 7px;
+
+    padding: 5px 2px;
+
+  }
+.title-icon {
+  background: #FC4EC; /* kotak krem */
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.title-icon ion-icon {
+  font-size: 22px;
+  color: #D81B60 !important;
+}
+/* ==========================================
+   RUANG BAWAH TAB4
+   AGAR KONTEN TIDAK TERTUTUP TAB MENU
+========================================== */
+
+.hasil-content {
+  --padding-bottom: 120px;
+  padding-bottom: 120px;
+}
+}

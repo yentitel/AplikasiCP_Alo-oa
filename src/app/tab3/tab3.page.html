@@ -1,0 +1,1478 @@
+<ion-header>
+  <ion-toolbar style="--background: #B71C1C; --color: white;">
+    <ion-title>
+      <ion-icon name="analytics-outline"></ion-icon>
+      PROSES CLUSTERING
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+
+
+<!-- =====================================================
+     INFORMASI DATA
+===================================================== -->
+
+<div class="info-section">
+
+  <div class="section-header">
+
+    <h2>
+      <ion-icon name="information-circle-outline" color="black"></ion-icon>
+      Informasi Data
+    </h2>
+
+  </div>
+
+  <div class="section-content">
+
+    <ion-item lines="none">
+      <ion-icon
+        slot="start"
+        name="people"
+        color="warning"
+        style="color: #a16207">
+      </ion-icon>
+
+      <ion-label>
+        Jumlah Data
+      </ion-label>
+
+      <ion-badge color="black">
+        {{jumlahData}} Siswa
+      </ion-badge>
+    </ion-item>
+
+
+    <ion-item lines="none">
+
+      <ion-icon
+        slot="start"
+        name="git-network"
+        color="danger">
+      </ion-icon>
+
+      <ion-label>
+        Metode
+      </ion-label>
+
+      <ion-badge color="black">
+        Agglomerative Hierarchical Clustering
+      </ion-badge>
+
+    </ion-item>
+
+
+    <ion-item lines="none">
+
+      <ion-icon
+        slot="start"
+        name="link-outline"
+        color="success">
+      </ion-icon>
+
+      <ion-label>
+        Linkage
+      </ion-label>
+
+      <ion-badge color="black">
+        Ward Linkage
+      </ion-badge>
+
+    </ion-item>
+
+
+    <ion-item lines="none">
+
+      <ion-icon
+        slot="start"
+        name="layers"
+        style="color: #111827">
+      </ion-icon>
+
+      <ion-label>
+        Jumlah Cluster
+      </ion-label>
+
+      <ion-select [(ngModel)]="jumlahCluster">
+
+        <ion-select-option [value]="2">
+          2 Cluster
+        </ion-select-option>
+
+        <ion-select-option [value]="3">
+          3 Cluster
+        </ion-select-option>
+
+        <ion-select-option [value]="4">
+          4 Cluster
+        </ion-select-option>
+
+        <ion-select-option [value]="5">
+          5 Cluster
+        </ion-select-option>
+
+      </ion-select>
+
+    </ion-item>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     PROSES CLUSTERING
+===================================================== -->
+
+<div class="proses-section">
+
+  <div class="section-content ion-text-center">
+
+    <ion-icon
+      name="git-merge-outline"
+      size="large"
+      color="danger">
+    </ion-icon>
+
+    <h2>
+      Agglomerative Hierarchical Clustering
+    </h2>
+
+    <p>
+      Merupakan teknik clustering dengan pendekatan
+      bottom-up, yaitu setiap data pada awalnya dianggap
+      sebagai satu cluster tersendiri kemudian cluster
+      yang memiliki jarak terdekat digabungkan secara
+      bertahap hingga diperoleh jumlah cluster yang
+      diinginkan.
+    </p>
+
+
+    <div class="proses-wrapper">
+
+      <ion-button
+        class="btn-proses"
+        color="danger"
+        (click)="prosesAHC()">
+
+        <ion-icon
+          slot="start"
+          name="play-circle-outline"
+          color="danger">
+        </ion-icon>
+
+        Proses Clustering
+
+      </ion-button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<div class="progress-container">
+
+  <ion-progress-bar
+    [value]="progress / 100"
+    [color]="progress == 100 ? 'success' : 'medium'">
+  </ion-progress-bar>
+
+  <p class="progress-text">
+    {{progress}}%
+  </p>
+
+</div>
+
+
+
+<!-- =====================================================
+     STATUS PROSES
+===================================================== -->
+
+<div
+  class="result-section"
+  *ngIf="mulaiProses">
+
+  <div class="section-header">
+
+    <h2>
+      <ion-icon name="sync-outline"></ion-icon>
+      Status Proses
+    </h2>
+
+  </div>
+
+
+  <div class="section-content">
+
+    <div class="status-item">
+
+      <span>
+        Membuat Matriks Euclidean
+      </span>
+
+      <span>
+        {{status1}}
+      </span>
+
+    </div>
+
+
+    <div class="status-item">
+
+      <span>
+        Menerapkan AHC dengan Ward
+      </span>
+
+      <span>
+        {{status2}}
+      </span>
+
+    </div>
+
+
+    <div class="status-item">
+
+      <span>
+        Membentuk Cluster
+      </span>
+
+      <span>
+        {{status4}}
+      </span>
+
+    </div>
+
+
+    <div class="status-item">
+
+      <span>
+        Evaluasi Hasil
+      </span>
+
+      <span>
+        {{status5}}
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MATRIKS EUCLIDEAN DISTANCE
+===================================================== -->
+
+<div
+  class="result-section"
+  *ngIf="showDistanceMatrix">
+
+  <div class="section-header">
+
+    <h2>
+
+      <ion-icon name="grid-outline"></ion-icon>
+
+      Matriks Euclidean Distance
+
+    </h2>
+
+    <p>
+
+      Hasil perhitungan jarak antar siswa menggunakan
+      Euclidean Distance.
+
+    </p>
+
+  </div>
+
+
+  <div class="section-content">
+
+    <div class="table-container">
+
+      <table class="result-table distance-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Nama</th>
+
+            <th *ngFor="let siswa of dataSiswa">
+
+              {{siswa.nama}}
+
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="let row of distanceMatrix; let i = index">
+
+            <td class="sticky-name">
+
+              <strong>
+                {{dataSiswa[i].nama}}
+              </strong>
+
+            </td>
+
+            <td
+              *ngFor="let nilai of row">
+
+              {{nilai | number:'1.0-4'}}
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     RIWAYAT PENGGABUNGAN CLUSTER WARD
+===================================================== -->
+
+<div
+  class="result-section"
+  *ngIf="mergeHistory.length > 0">
+
+  <div class="section-header">
+
+    <h2>
+
+      <ion-icon name="git-merge-outline"></ion-icon>
+
+      Riwayat Penggabungan Cluster Metode Ward
+
+    </h2>
+
+    <p>
+
+      Proses penggabungan cluster berdasarkan nilai
+      Ward Criterion terkecil pada setiap iterasi.
+      Klik cluster untuk melihat nama siswa.
+
+    </p>
+
+  </div>
+
+
+  <div class="section-content">
+
+    <div class="table-container">
+
+      <table class="result-table merge-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Iterasi</th>
+
+            <th>Cluster 1</th>
+
+            <th>Cluster 2</th>
+
+            <th>Jarak Centroid</th>
+
+            <th>Ward Criterion</th>
+
+            <th>Cluster Baru</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="let item of mergeHistory">
+
+
+            <!-- =========================================
+                 LANGKAH / ITERASI
+            ========================================== -->
+
+            <td class="center">
+
+              {{item.langkah}}
+
+            </td>
+
+
+            <!-- =========================================
+                 CLUSTER 1
+            ========================================== -->
+
+            <td
+              class="clickable-cluster"
+              (click)="
+                toggleClusterDetail(
+                  item,
+                  'cluster1'
+                )
+              ">
+
+              <span class="cluster-link">
+
+                {{item.label1}}
+
+              </span>
+
+
+              <!-- DETAIL ANGGOTA CLUSTER 1 -->
+
+              <div
+                class="detail-anggota"
+                *ngIf="
+                  isClusterDetailOpen(
+                    item,
+                    'cluster1'
+                  )
+                ">
+
+                <div class="detail-title">
+
+                  Anggota:
+
+                </div>
+
+
+                <div
+                  *ngFor="
+                    let anggota of item.anggota1;
+                    let i = index
+                  "
+                  class="nama-anggota">
+
+                  {{i + 1}}.
+                  {{getNamaSiswa(anggota)}}
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <!-- =========================================
+                 CLUSTER 2
+            ========================================== -->
+
+            <td
+              class="clickable-cluster"
+              (click)="
+                toggleClusterDetail(
+                  item,
+                  'cluster2'
+                )
+              ">
+
+              <span class="cluster-link">
+
+                {{item.label2}}
+
+              </span>
+
+
+              <!-- DETAIL ANGGOTA CLUSTER 2 -->
+
+              <div
+                class="detail-anggota"
+                *ngIf="
+                  isClusterDetailOpen(
+                    item,
+                    'cluster2'
+                  )
+                ">
+
+                <div class="detail-title">
+
+                  Anggota:
+
+                </div>
+
+
+                <div
+                  *ngFor="
+                    let anggota of item.anggota2;
+                    let i = index
+                  "
+                  class="nama-anggota">
+
+                  {{i + 1}}.
+                  {{getNamaSiswa(anggota)}}
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <!-- =========================================
+                 JARAK CENTROID
+            ========================================== -->
+
+            <td class="number">
+
+              {{item.centroidDistance | number:'1.4-4'}}
+
+            </td>
+
+
+            <!-- =========================================
+                 WARD CRITERION
+            ========================================== -->
+
+            <td class="number">
+
+              <strong>
+
+                {{item.wardCriterion | number:'1.4-4'}}
+
+              </strong>
+
+            </td>
+
+
+            <!-- =========================================
+                 CLUSTER BARU
+            ========================================== -->
+
+            <td
+              class="clickable-cluster center"
+              (click)="
+                toggleClusterDetail(
+                  item,
+                  'baru'
+                )
+              ">
+
+
+              <span class="cluster-badge">
+
+                {{item.clusterBaru?.length}} siswa
+
+              </span>
+
+
+              <!-- DETAIL ANGGOTA CLUSTER BARU -->
+
+              <div
+                class="detail-anggota"
+                *ngIf="
+                  isClusterDetailOpen(
+                    item,
+                    'baru'
+                  )
+                ">
+
+                <div class="detail-title">
+
+                  Anggota Cluster Baru:
+
+                </div>
+
+
+                <div
+                  *ngFor="
+                    let anggota of item.clusterBaru;
+                    let i = index
+                  "
+                  class="nama-anggota">
+
+                  {{i + 1}}.
+                  {{getNamaSiswa(anggota)}}
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HASIL CLUSTER
+===================================================== -->
+
+<div
+  class="result-section"
+  *ngIf="hasilCluster.length > 0">
+
+  <div class="section-header">
+
+    <h2>
+
+      <ion-icon name="layers-outline"></ion-icon>
+
+      Hasil Cluster
+
+    </h2>
+
+    <p>
+
+      Hasil akhir pengelompokan siswa berdasarkan
+      proses Agglomerative Hierarchical Clustering.
+
+    </p>
+
+  </div>
+
+
+  <div class="section-content">
+
+    <div class="table-container">
+
+      <table class="result-table hasil-cluster-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Cluster</th>
+
+            <th>Jumlah Siswa</th>
+
+            <th>Anggota Cluster</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let cluster of hasilCluster;
+              let i = index
+            ">
+
+            <td class="center">
+
+              <span class="cluster-badge">
+
+                C{{i + 1}}
+
+              </span>
+
+            </td>
+
+
+            <td class="center">
+
+              {{getJumlahAnggota(cluster)}}
+
+            </td>
+
+
+            <td>
+
+              <!-- TOMBOL LIHAT ANGGOTA -->
+
+              <ion-button
+                size="small"
+                fill="outline"
+                color="black"
+                class="btn-anggota"
+                (click)="toggleHasilCluster(i)">
+
+                <ion-icon
+                  slot="start"
+                  [name]="
+                    clusterTerbuka === i
+                      ? 'chevron-up-outline'
+                      : 'people-outline'
+                  ">
+                </ion-icon>
+
+                {{
+                  clusterTerbuka === i
+                    ? 'Sembunyikan Anggota'
+                    : 'Lihat Anggota'
+                }}
+
+              </ion-button>
+
+
+              <!-- DAFTAR ANGGOTA -->
+
+              <div
+                class="anggota-detail"
+                *ngIf="clusterTerbuka === i">
+
+                <div
+                  class="anggota-item"
+                  *ngFor="
+                    let anggota of cluster.anggota;
+                    let no = index
+                  ">
+
+                  <span class="nomor-anggota">
+                    {{no + 1}}
+                  </span>
+
+                  <span class="nama-anggota">
+                    {{getNamaSiswa(anggota)}}
+                  </span>
+
+                  <span class="kelas-anggota">
+                    Kelas {{getKelasSiswa(anggota)}}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     REKAPITULASI CENTROID
+===================================================== -->
+
+<div
+  class="result-section"
+  *ngIf="centroidClusters.length > 0">
+
+  <div class="section-header">
+
+    <h2>
+
+      <ion-icon name="analytics-outline"></ion-icon>
+
+      Rekapitulasi Centroid
+
+    </h2>
+
+    <p>
+
+      Nilai rata-rata setiap atribut pada masing-masing
+      cluster.
+
+    </p>
+
+  </div>
+
+
+  <div class="section-content">
+
+    <div class="table-container">
+
+      <table class="result-table centroid-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Cluster</th>
+
+            <th>Jumlah Siswa</th>
+
+            <th>Agama</th>
+
+            <th>Pancasila</th>
+
+            <th>Bahasa Indonesia</th>
+
+            <th>Matematika</th>
+
+            <th>PJOK</th>
+
+            <th>Seni Budaya</th>
+
+            <th>Mulok</th>
+
+            <th>IPAS</th>
+
+            <th>Bahasa Inggris</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let cluster of centroidClusters;
+              let i = index
+            ">
+
+            <td class="center">
+
+              <span class="cluster-badge">
+
+                C{{i + 1}}
+
+              </span>
+
+            </td>
+
+
+            <td class="center">
+
+              {{cluster.jumlahSiswa}}
+
+            </td>
+
+
+            <td
+              *ngFor="
+                let nilai of cluster.centroid
+              ">
+
+              {{nilai | number:'1.2-2'}}
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     PENENTUAN ANGGOTA CLUSTER
+===================================================== -->
+
+<div
+  class="result-section"
+  *ngIf="distanceCentroid.length > 0">
+
+  <div class="section-header">
+
+    <h2>
+
+      <ion-icon name="git-compare-outline"></ion-icon>
+
+      Penentuan Anggota Cluster
+
+    </h2>
+
+    <p>
+
+      Perbandingan jarak setiap siswa terhadap centroid
+      masing-masing cluster.
+
+    </p>
+
+  </div>
+
+
+  <div class="section-content">
+
+    <div class="table-container">
+
+      <table class="result-table distance-result">
+
+        <thead>
+
+          <tr>
+
+            <th>No</th>
+
+            <th>Nama Siswa</th>
+
+            <th>Kelas</th>
+
+
+            <th
+              *ngFor="
+                let c of [].constructor(+jumlahCluster);
+                let i = index
+              ">
+
+              C{{i + 1}}
+
+            </th>
+
+
+            <th>
+              Hasil AHC
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let item of distanceCentroid;
+              let i = index
+            ">
+
+            <td class="center">
+
+              {{i + 1}}
+
+            </td>
+
+
+            <td class="nama-siswa">
+
+              {{item.nama}}
+
+            </td>
+
+
+            <td class="center">
+
+              {{item.kelas}}
+
+            </td>
+
+
+            <td
+              *ngFor="
+                let jarak of item.distanceCentroid
+              "
+              class="number">
+
+              {{jarak | number:'1.2-2'}}
+
+            </td>
+
+
+            <td class="center">
+
+              <span class="hasil-badge">
+
+                {{item.clusterAHC}}
+
+              </span>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     DETAIL SILHOUETTE
+===================================================== -->
+
+<div
+  class="result-section evaluation-section"
+  *ngIf="silhouetteDetail.length > 0">
+
+  <div class="section-header">
+
+    <h2>
+
+      <ion-icon name="analytics-outline"></ion-icon>
+
+      Detail Perhitungan Silhouette
+
+    </h2>
+
+    <p>
+
+      Perhitungan nilai Silhouette untuk setiap siswa.
+
+    </p>
+
+  </div>
+
+
+  <div class="section-content">
+
+    <div class="table-container">
+
+      <table class="result-table evaluation-table">
+
+        <thead>
+
+          <tr>
+
+            <th>No</th>
+
+            <th>Nama Siswa</th>
+
+            <th>Cluster</th>
+
+            <th>a(i)</th>
+
+            <th>b(i)</th>
+
+            <th>s(i)</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let item of silhouetteDetail;
+              let i = index
+            ">
+
+            <td class="center">
+
+              {{i + 1}}
+
+            </td>
+
+            <td>
+
+              {{item.nama}}
+
+            </td>
+
+            <td class="center">
+
+              C{{item.cluster}}
+
+            </td>
+
+            <td class="number">
+
+              {{item.a | number:'1.4-4'}}
+
+            </td>
+
+            <td class="number">
+
+              {{item.b | number:'1.4-4'}}
+
+            </td>
+
+            <td class="number">
+
+              {{item.s | number:'1.4-4'}}
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="evaluation-result">
+
+      <span>
+        Nilai Silhouette
+      </span>
+
+      <strong>
+        {{silhouetteScore}}
+      </strong>
+
+    </div>
+
+
+    <div class="interpretation">
+
+      {{getSilhouetteInterpretation()}}
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     DETAIL DAVIES BOULDIN INDEX
+===================================================== -->
+
+<div
+  class="result-section evaluation-section"
+  *ngIf="dbiDetail.length > 0">
+
+  <div class="section-header">
+
+    <h2>
+
+      <ion-icon name="analytics-outline"></ion-icon>
+
+      Detail Perhitungan Davies-Bouldin Index
+
+    </h2>
+
+    <p>
+
+      Nilai scatter pada masing-masing cluster.
+
+    </p>
+
+  </div>
+
+
+  <div class="section-content">
+
+    <div class="table-container">
+
+      <table class="result-table evaluation-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Cluster</th>
+
+            <th>Scatter</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="let item of dbiDetail">
+
+            <td class="center">
+
+              C{{item.cluster}}
+
+            </td>
+
+            <td class="number">
+
+              {{item.scatter | number:'1.4-4'}}
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="evaluation-result">
+
+      <span>
+        Nilai DBI
+      </span>
+
+      <strong>
+        {{dbi}}
+      </strong>
+
+    </div>
+
+
+    <div class="interpretation">
+
+      {{getDBIInterpretation()}}
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     DETAIL CALINSKI-HARABASZ
+===================================================== -->
+
+<div
+  class="result-section evaluation-section"
+  *ngIf="chiDetail.length > 0">
+
+  <div class="section-header">
+
+    <h2>
+
+      <ion-icon name="analytics-outline"></ion-icon>
+
+      Detail Perhitungan Calinski-Harabasz Index
+
+    </h2>
+
+    <p>
+
+      Perhitungan BSS dan WSS untuk mengevaluasi
+      pemisahan antar cluster.
+
+    </p>
+
+  </div>
+
+
+  <div class="section-content">
+
+    <div class="table-container">
+
+      <table class="result-table evaluation-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Cluster</th>
+
+            <th>Jumlah</th>
+
+            <th>Jarak Centroid</th>
+
+            <th>BSS</th>
+
+            <th>WSS</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="let item of chiDetail">
+
+            <td class="center">
+
+              C{{item.cluster}}
+
+            </td>
+
+
+            <td class="center">
+
+              {{item.jumlah}}
+
+            </td>
+
+
+            <td class="number">
+
+              {{item.centroidDistance | number:'1.4-4'}}
+
+            </td>
+
+
+            <td class="number">
+
+              {{item.bss | number:'1.4-4'}}
+
+            </td>
+
+
+            <td class="number">
+
+              {{item.wss | number:'1.4-4'}}
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="evaluation-summary">
+
+      <div>
+
+        <span>
+          Total BSS
+        </span>
+
+        <strong>
+
+          {{totalBSS | number:'1.4-4'}}
+
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>
+          Total WSS
+        </span>
+
+        <strong>
+
+          {{totalWSS | number:'1.4-4'}}
+
+        </strong>
+
+      </div>
+
+
+      <div class="chi-final">
+
+        <span>
+          Nilai CHI
+        </span>
+
+        <strong>
+
+          {{chi}}
+
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="interpretation">
+
+      {{getCHIInterpretation()}}
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     STATUS SELESAI
+===================================================== -->
+
+<div
+  class="success-section"
+  *ngIf="prosesSelesai">
+
+  <div class="section-content ion-text-center">
+
+    <ion-icon
+      name="checkmark-circle"
+      color="success"
+      size="large">
+    </ion-icon>
+
+
+    <h2>
+      Clustering Berhasil
+    </h2>
+
+
+    <p>
+
+      Seluruh tahapan Agglomerative Hierarchical
+      Clustering telah selesai dilakukan.
+
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     TOMBOL HASIL
+===================================================== -->
+
+<ion-button
+  *ngIf="prosesSelesai"
+  expand="block"
+  color="success"
+  routerLink="/tabs/tab4">
+
+  <ion-icon
+    slot="start"
+    name="arrow-forward-outline">
+  </ion-icon>
+
+  Lihat Hasil Cluster
+
+</ion-button>
+
+
+</ion-content>

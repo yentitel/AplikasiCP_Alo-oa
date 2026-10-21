@@ -1,0 +1,7 @@
+{
+  "name": "CP-Insight",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,479 @@
+<ion-header>
+  <ion-toolbar style="--background: #B71C1C; --color: white;">
+    <ion-title>HASIL CLUSTERING</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="hasil-content">
+
+<!-- ============================================= -->
+<!-- ANGGOTA CLUSTER -->
+<!-- ============================================= -->
+
+<ion-card class="member-header-card">
+
+  <ion-card-header>
+
+    <div class="section-card-title">
+
+      <div class="title-icon member-title-icon">
+        <ion-icon name="people" color="warning"></ion-icon>
+      </div>
+
+      <ion-card-title>
+        Anggota Cluster
+      </ion-card-title>
+
+    </div>
+
+  </ion-card-header>
+
+</ion-card>
+<!-- ========================================= -->
+<!-- HASIL CLUSTER -->
+<!-- ========================================= -->
+
+<div
+  class="cluster-scroll"
+  [class.cluster-count-1]="hasilCluster.length === 1"
+  [class.cluster-count-2]="hasilCluster.length === 2"
+  [class.cluster-count-3]="hasilCluster.length === 3"
+  [class.cluster-count-many]="hasilCluster.length >= 4">
+
+  <ion-card
+    *ngFor="let cluster of hasilCluster; let i = index"
+    class="cluster-card">
+
+    <ion-card-content>
+
+      <!-- ================================ -->
+      <!-- BAGIAN ATAS CLUSTER -->
+      <!-- ================================ -->
+
+      <div class="cluster-top">
+
+        <!-- NOMOR CLUSTER -->
+        <div class="cluster-number">
+          {{ i + 1 }}
+        </div>
+
+        <!-- CAPAIAN -->
+        <div class="info-box">
+
+          <span>Capaian</span>
+
+          <strong>
+            {{ capaianCluster[i]?.capaian }}
+          </strong>
+
+        </div>
+
+        <!-- RATA-RATA -->
+        <div class="info-box">
+
+          <span>Rata-rata</span>
+
+          <strong>
+            {{ capaianCluster[i]?.rataRata }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================================ -->
+      <!-- MAPEL DOMINAN -->
+      <!-- ================================ -->
+
+      <div class="dominant-line">
+
+        <ion-icon name="sunny-outline"></ion-icon>
+
+        <strong>
+          Mata Pelajaran Dominan =
+        </strong>
+
+        <span>
+          {{ getDominan(cluster) }}
+        </span>
+
+      </div>
+
+
+      <!-- ================================ -->
+      <!-- REKOMENDASI -->
+      <!-- ================================ -->
+
+      <div class="recommendation-section">
+
+        <div class="recommendation-title">
+
+          <ion-icon name="bulb-outline"></ion-icon>
+
+          <strong>
+            Rekomendasi Pembelajaran
+          </strong>
+
+        </div>
+
+        <p>
+          {{ getRekomendasi(cluster) }}
+        </p>
+
+      </div>
+
+
+      <!-- ================================ -->
+      <!-- ANGGOTA CLUSTER -->
+      <!-- ================================ -->
+
+      <div class="member-section">
+
+        <div class="member-heading">
+
+          <strong>
+            Anggota Cluster {{ i + 1 }}
+          </strong>
+
+          <ion-badge>
+            {{ getAnggotaCluster(cluster).length }} Siswa
+          </ion-badge>
+
+        </div>
+
+
+        <!-- TABEL -->
+        <div class="cluster-table">
+
+          <table>
+
+            <thead>
+
+              <tr>
+                <th>No</th>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              <tr
+                *ngFor="
+                  let siswa of getAnggotaCluster(cluster);
+                  let n = index
+                ">
+
+                <td>
+                  {{ n + 1 }}
+                </td>
+
+                <td class="student-name">
+                  {{ siswa.nama }}
+                </td>
+
+                <td>
+
+                  <span class="class-badge">
+                    {{ siswa.kelas }}
+                  </span>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- DENDROGRAM -->
+<!-- ================================================= -->
+
+<ion-card class="dendrogram-card">
+
+  <ion-card-header>
+
+    <div class="section-card-title">
+
+      <div class="title-icon">
+        <ion-icon name="git-network" color="danger"></ion-icon>
+      </div>
+
+      <div>
+
+        <ion-card-title>
+          Dendrogram Hasil Clustering
+        </ion-card-title>
+      </div>
+
+    </div>
+
+  </ion-card-header>
+
+
+  <ion-card-content>
+
+    <!-- DENDROGRAM -->
+
+    <div class="dendrogram-wrapper">
+
+      <img
+        [src]="dendrogramImage"
+        alt="Dendrogram hasil clustering">
+
+    </div>
+
+
+    <!-- KETERANGAN CLUSTER -->
+
+    <div class="dendrogram-cluster-list">
+
+      <div
+        class="dendrogram-cluster-item"
+        *ngFor="let cluster of hasilCluster; let i = index"
+      >
+
+        <div class="dendrogram-cluster-number">
+          {{ i + 1 }}
+        </div>
+
+        <div class="dendrogram-cluster-text">
+
+          <strong>
+            Cluster {{ i + 1 }}
+          </strong>
+
+          <span>
+            {{ getAnggotaCluster(cluster).length }} siswa
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </ion-card-content>
+
+</ion-card>
+
+  <!-- ================================================= -->
+  <!-- EVALUASI -->
+  <!-- ================================================= -->
+
+  <ion-card class="evaluation-card">
+
+    <ion-card-header>
+
+      <div class="section-card-title">
+
+        <div class="title-icon">
+
+          <ion-icon name="color-palette-outline" style="color: #D81B60"></ion-icon>
+
+        </div>
+
+
+        <div>
+
+          <ion-card-title>
+            Evaluasi Clustering
+          </ion-card-title>
+
+      
+        </div>
+
+      </div>
+
+    </ion-card-header>
+
+
+    <ion-card-content>
+
+      <ng-container
+        *ngIf="
+          silhouetteScore !== null;
+          else belumCluster
+        ">
+
+
+        <!-- SILHOUETTE SCORE -->
+
+        <div class="metric-item">
+
+          <div class="metric-icon">
+
+            <ion-icon name="analytics-outline"></ion-icon>
+
+          </div>
+
+
+          <div class="metric-info">
+
+            <h3>
+              Silhouette Score
+            </h3>
+
+            <p>
+              {{ getSilhouetteInterpretation() }}
+            </p>
+
+          </div>
+
+
+          <strong class="metric-value">
+            {{ silhouetteScore }}
+          </strong>
+
+        </div>
+
+
+        <!-- DAVIES BOULDIN -->
+
+        <div class="metric-item">
+
+          <div class="metric-icon">
+
+            <ion-icon name="git-compare-outline"></ion-icon>
+
+          </div>
+
+
+          <div class="metric-info">
+
+            <h3>
+              Davies-Bouldin Index
+            </h3>
+
+            <p>
+              {{ getDBIInterpretation() }}
+            </p>
+
+          </div>
+
+
+          <strong class="metric-value">
+            {{ dbi }}
+          </strong>
+
+        </div>
+
+
+        <!-- CALINSKI HARABASZ -->
+
+        <div class="metric-item">
+
+          <div class="metric-icon">
+
+            <ion-icon name="stats-chart-outline"></ion-icon>
+
+          </div>
+
+
+          <div class="metric-info">
+
+            <h3>
+              Calinski-Harabasz Index
+            </h3>
+
+            <p>
+              {{ getCHIInterpretation() }}
+            </p>
+
+          </div>
+
+
+          <strong class="metric-value">
+            {{ chi }}
+          </strong>
+
+        </div>
+
+
+      </ng-container>
+
+
+      <!-- BELUM CLUSTER -->
+
+      <ng-template #belumCluster>
+
+        <div class="empty-state">
+
+          <ion-icon
+            name="information-circle" color="danger">
+          </ion-icon>
+
+          <p>
+            Belum dilakukan proses clustering.
+          </p>
+
+        </div>
+
+      </ng-template>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+ <!-- ========================================= -->
+<!-- KESIMPULAN -->
+<!-- ========================================= -->
+
+<div class="conclusion-section">
+
+  <ion-icon
+    name="document-text-outline"
+    class="conclusion-icon">
+  </ion-icon>
+
+  <strong class="conclusion-label">
+    Kesimpulan =
+  </strong>
+
+  <span class="conclusion-text">
+    Berdasarkan proses Agglomerative Hierarchical Clustering
+    menggunakan metode Ward Linkage, data siswa berhasil
+    dikelompokkan menjadi {{ hasilCluster.length }} cluster
+    berdasarkan kemiripan nilai capaian pembelajaran.
+  </span>
+
+</div>
+  <!-- ================================================= -->
+  <!-- TOMBOL EXPORT -->
+  <!-- ================================================= -->
+
+  <div class="button-area">
+
+    <ion-button
+      class="export-btn"
+      shape="round"
+      (click)="exportPDF()">
+
+      <ion-icon
+        slot="start"
+        name="document-outline" color="danger">
+      </ion-icon>
+
+      Export Hasil ke PDF
+
+    </ion-button>
+
+  </div>
+
+
+</ion-content>
