@@ -19,7 +19,7 @@ export class LoginPage {
   errorMessage: string = '';
 
   // Samakan IP ini dengan IP laptop dan port backend Flask.
-  private apiUrl = 'http://192.168.1.27:5000';
+  private apiUrl = 'http://192.168.1.25:5000';
 
   constructor(
     private pythonService: PythonService,

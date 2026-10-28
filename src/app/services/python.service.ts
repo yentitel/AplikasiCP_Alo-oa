@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PythonService {
 
-  private api = 'http://192.168.1.27:5000';
+  private api = 'http://192.168.1.25:5000';
 
   constructor(private http: HttpClient) {}
 

@@ -89,3 +89,6 @@ __pycache__/
 
 
 backend/static/dendrogram*.png
+# SQL database pribadi, jangan unggah ke GitHub Public
+database/cp_insight.sql
+database/cp_insight_public.sql
